@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerName your_domain.com  # Replace with your domain or IP address
+
+    # Proxy for the root path to port 3000
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+
+    # Proxy for the /docs path to port 8000
+    ProxyPass /docs http://localhost:8000/
+    ProxyPassReverse /docs http://localhost:8000/
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
